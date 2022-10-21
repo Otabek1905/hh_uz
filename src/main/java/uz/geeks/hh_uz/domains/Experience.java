@@ -1,18 +1,15 @@
 package uz.geeks.hh_uz.domains;
 
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class Experience {
-    private String organization;
-    private String region;
-    private String website;
-    private String position;
-    private String description;
+
 }

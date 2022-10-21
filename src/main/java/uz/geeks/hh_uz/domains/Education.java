@@ -20,6 +20,8 @@ public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Embedded
+    private Auditable auditable;
 
     @Column(nullable = false)
     private String name;

@@ -12,6 +12,10 @@ public class SocialNetwork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Embedded
+    private Auditable auditable;
+
     @Column(nullable = false,unique = true)
     private String link;
     @ManyToOne

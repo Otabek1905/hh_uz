@@ -19,6 +19,9 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Embedded
+    private Auditable auditable;
+
     @Column(nullable = false)
     private LocalDate startingDate;
 

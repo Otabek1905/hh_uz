@@ -21,16 +21,22 @@ public class User {
 
     @Column(name = "full name")
     private String fullname;
+
     @Column(nullable = false, unique = true)
     private String username;
+
     @Column(nullable = false)
     private String password;
+
     @Column(unique = true, nullable = false)
     private String email;
+
     @OneToMany(mappedBy = "user")
     private List<SocialNetwork> socialNetworks;
+
     @Column(nullable = false)
     private Location location;
+
     private String image_url;
     @Column(nullable = false, unique = true)
     private UserType type;

@@ -1,4 +1,5 @@
 package uz.geeks.hh_uz.dto;
 
-public class Delete {
+public interface Dto {
+
 }

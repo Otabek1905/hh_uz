@@ -1,5 +1,9 @@
 package uz.geeks.hh_uz.domains;
 
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 /**
@@ -8,6 +12,13 @@ import javax.persistence.*;
  * hh_uz/IntelliJ IDEA
  */
 @Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class SocialNetwork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

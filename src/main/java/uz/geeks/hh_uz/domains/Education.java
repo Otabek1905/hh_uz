@@ -5,16 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.EducationLevel;
 import uz.geeks.hh_uz.enums.LanguageType;
 
 import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
 @NoArgsConstructor
-@Entity
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Education {
 
     @Id
@@ -37,6 +42,5 @@ public class Education {
 
     @ManyToOne
     private Resume resume;
-
 
 }

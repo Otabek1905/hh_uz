@@ -1,20 +1,22 @@
 package uz.geeks.hh_uz.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.City;
 import uz.geeks.hh_uz.enums.Employment;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
 @NoArgsConstructor
-@Entity
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Resume {
 
     @Id
@@ -59,11 +61,5 @@ public class Resume {
 
     @OneToMany(mappedBy = "resume")
     private List<Skills> skills;
-
-
-
-
-
-
 
 }

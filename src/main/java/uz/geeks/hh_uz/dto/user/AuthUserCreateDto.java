@@ -19,9 +19,10 @@ import java.util.List;
 @Builder
 public class AuthUserCreateDto implements Dto {
 
+
     private String fullname;
 
-
+    @NotBlank(message = "username can not be blank")
     private String username;
 
 

@@ -2,17 +2,20 @@ package uz.geeks.hh_uz.domains;
 
 
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Experience {
 
     @Id

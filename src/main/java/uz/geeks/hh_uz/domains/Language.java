@@ -1,19 +1,21 @@
 package uz.geeks.hh_uz.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.LanguageDegree;
 import uz.geeks.hh_uz.enums.LanguageType;
 
 import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
 @NoArgsConstructor
-@Entity
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,9 +1,14 @@
 package uz.geeks.hh_uz.domains;
 
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.Location;
 import uz.geeks.hh_uz.enums.UserType;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -12,6 +17,13 @@ import java.util.List;
  * hh_uz/IntelliJ IDEA
  */
 @Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +43,7 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<SocialNetwork> socialNetworks;
 
     @Column(nullable = false)
@@ -40,6 +52,29 @@ public class User {
     private String image_url;
     @Column(nullable = false, unique = true)
     private UserType type;
+
+
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.NOT_ACTIVE;
+
+    private LocalDateTime lastLoginAt;
+
+    private Integer loginTryCount;
+
+//    @OneToMany(mappedBy = "user")
+//    private Collection<AuthRole> userRoles;
+
+    public enum Status {
+        ACTIVE,
+        NOT_ACTIVE,
+        ACCOUNT_EXPIRED,
+        CREDENTIALS_EXPIRED;
+
+        public boolean notEquals(Status status) {
+
+            return !this.equals(status);
+        }
+    }
 
 
 }

@@ -1,6 +1,10 @@
 package uz.geeks.hh_uz.domains;
 
+import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,17 +17,18 @@ import java.util.Date;
  * hh_uz/IntelliJ IDEA
  */
 @Embeddable
+@Data
 public class Auditable {
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Long createdBy;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdAt", nullable = false,
             columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private Date createdAt;
-    @Column(nullable = false, unique = true)
     private Long updatedBy;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updatedAt", nullable = false,
-            columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private Date updatedAt;
+    @ColumnDefault("false")
+    @Column(name = "deleted", nullable = false)
+    private Boolean deleted;
 }

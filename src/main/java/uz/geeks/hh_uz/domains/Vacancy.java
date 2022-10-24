@@ -1,5 +1,9 @@
 package uz.geeks.hh_uz.domains;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import uz.geeks.hh_uz.enums.JobSchedule;
 import uz.geeks.hh_uz.enums.JobType;
 
@@ -10,6 +14,11 @@ import javax.persistence.*;
  * @since 21/10/22 17:57 (Friday)
  * hh_uz/IntelliJ IDEA
  */
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +36,18 @@ public class Vacancy {
 
     @Column(nullable = false)
     private JobSchedule jobSchedule;
+
     @Column(nullable = false)
     private JobType jobType;
 
     private String offer;
 
     private String demands;
+
+    @ManyToOne
+    private Company company;
+
+
 
 
 }

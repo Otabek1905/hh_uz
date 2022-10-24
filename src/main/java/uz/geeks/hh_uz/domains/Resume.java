@@ -21,9 +21,6 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Embedded
-    private Auditable auditable;
-
     @Column(nullable = false)
     private String fullName;
 
@@ -47,6 +44,9 @@ public class Resume {
 
     @Column(nullable = true)
     private Double salary;
+
+    @Embedded
+    private Auditable auditable;
 
     @OneToMany(mappedBy = "resume")
     private List<Education> educations;

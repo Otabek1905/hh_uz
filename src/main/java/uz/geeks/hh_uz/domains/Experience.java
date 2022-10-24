@@ -1,17 +1,17 @@
 package uz.geeks.hh_uz.domains;
 
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @ToString
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Experience {
 
@@ -48,4 +48,4 @@ public class Experience {
 }
 
 
-}
+

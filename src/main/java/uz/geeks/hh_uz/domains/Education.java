@@ -9,6 +9,7 @@ import uz.geeks.hh_uz.enums.EducationLevel;
 import uz.geeks.hh_uz.enums.LanguageType;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -33,7 +34,10 @@ public class Education {
     private String department;
 
     @Column(nullable = false)
-    private LanguageType languageType;
+    private String faculty;
+
+    @Column(nullable = false)
+    private LocalDateTime yearOfGraduation;
 
     @ManyToOne
     private Resume resume;

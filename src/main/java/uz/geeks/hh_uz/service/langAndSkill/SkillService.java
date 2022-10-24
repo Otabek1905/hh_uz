@@ -52,11 +52,12 @@ public class SkillService extends AbstractService<SkillRepository, SkillMapper>
         return null;
     }
 
-    public void createSkill(Long resumeId, SkillCreateDTO dto) {
+    public Long createSkill(Long resumeId, SkillCreateDTO dto) {
         Resume resume = resumeRepository.findById(resumeId).orElseThrow(() -> new RuntimeException("resume not found"));
         Skills skills = mapper.fromCreateDto(dto);
         skills.setResume(resume);
         repository.save(skills);
+        return skills.getId();
     }
 
     public void edit(Long resumeId, SkillUpdateDTO dto) {

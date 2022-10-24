@@ -63,9 +63,10 @@ public class EducationService extends AbstractService<EducationRepository, Educa
         repository.save(education1);
     }
 
-    public void createEducation(Long resumeId, EducationCreateDTO dto) {
+    public Long createEducation(Long resumeId, EducationCreateDTO dto) {
         Resume resume = resumeRepository.findById(resumeId).orElseThrow(() -> new RuntimeException("resume not found"));
         Education education = mapper.fromCreateDto(dto);
         repository.save(education);
+        return education.getId();
     }
 }

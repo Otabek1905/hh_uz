@@ -1,12 +1,15 @@
 package uz.geeks.hh_uz.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import uz.geeks.hh_uz.domains.Resume;
 import uz.geeks.hh_uz.dto.resume.*;
 import uz.geeks.hh_uz.service.resume.ResumeService;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 
@@ -19,33 +22,37 @@ public class ResumeController extends ApiController<ResumeService>{
     }
 
     @PostMapping("/create")
-    public Long createResume(@RequestBody @Valid ResumeCreateDTO dto){
-        return service.create(dto);
+    public ResponseEntity<Long> createResume(@RequestBody @Valid ResumeCreateDTO dto){
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().build().toUri();
+        return ResponseEntity.created(uri).body(service.create(dto));
     }
 
-    @GetMapping("/delete/{id}")
-    public void deleteResume(@PathVariable Long id){
-         service.delete(id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteResume(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.ok("Entity deleted");
     }
 
     @GetMapping("/getAll")
-    public List<ResumeDTO> getAllResumes(){
-        return service.getAll();
+    public ResponseEntity<List<ResumeDTO>>getAllResumes(){
+        return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/getOne/{id}")
-    public ResumeDTO getOne(@PathVariable Long id){
-        return service.get(id);
+    public ResponseEntity<ResumeDTO> getOne(@PathVariable Long id){
+        return new ResponseEntity<>(service.get(id),HttpStatus.OK);
     }
 
     @PutMapping("/editPersonalInfo{resumeId}")
-    public void editPersonalInfo(@PathVariable Long resumeId,@RequestBody @Valid PersonalInfoUpdateDTO dto){
+    public ResponseEntity<String> editPersonalInfo(@PathVariable Long resumeId,@RequestBody @Valid PersonalInfoUpdateDTO dto){
         service.editPersonalInfo(resumeId,dto);
+        return ResponseEntity.ok("Personal info updated");
     }
 
     @PutMapping("/editWorkInfo{resumeId}")
-    public void editEmploymentInfoEdit(@PathVariable Long resumeId,@RequestBody @Valid EmploymentInfoDTO dto){
+    public ResponseEntity<String> editEmploymentInfoEdit(@PathVariable Long resumeId,@RequestBody @Valid EmploymentInfoDTO dto){
         service.editEmploymentInfo(resumeId,dto);
+        return ResponseEntity.ok("Work info updated");
     }
 
 

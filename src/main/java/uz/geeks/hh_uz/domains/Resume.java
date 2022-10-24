@@ -7,7 +7,9 @@ import uz.geeks.hh_uz.enums.City;
 import uz.geeks.hh_uz.enums.Employment;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -61,5 +63,13 @@ public class Resume {
 
     @OneToMany(mappedBy = "resume")
     private List<Skills> skills;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Resume_Vacancy",
+            joinColumns = { @JoinColumn(name = "resume_id") },
+            inverseJoinColumns = { @JoinColumn(name = "vacancy_id") }
+    )
+    Set<Vacancy> vacancies = new HashSet<>();
 
 }

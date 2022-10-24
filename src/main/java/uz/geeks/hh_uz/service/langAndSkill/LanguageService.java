@@ -53,11 +53,12 @@ public class LanguageService extends AbstractService<LanguageRepository, Languag
         return null;
     }
 
-    public void createLanguage(Long resumeId, LanguageCreateDTO dto) {
+    public Long createLanguage(Long resumeId, LanguageCreateDTO dto) {
         Resume resume = resumeRepository.findById(resumeId).orElseThrow(() -> new RuntimeException("resume not found"));
         Language language = mapper.fromCreateDto(dto);
         language.setResume(resume);
         repository.save(language);
+        return language.getId();
     }
 
     public void edit(Long resumeId, LanguageUpdateDTO dto) {

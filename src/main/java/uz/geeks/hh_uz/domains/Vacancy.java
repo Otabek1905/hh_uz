@@ -7,6 +7,8 @@ import uz.geeks.hh_uz.enums.JobSchedule;
 import uz.geeks.hh_uz.enums.JobType;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author "Berdimurodov Shoxrux"
@@ -48,6 +50,9 @@ public class Vacancy {
 
     @ManyToOne
     private Company company;
+
+    @ManyToMany(mappedBy = "vacancies")
+    Set<Resume> resumes = new HashSet<>();
 
 
 

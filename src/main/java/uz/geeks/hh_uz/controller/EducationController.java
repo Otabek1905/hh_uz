@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.geeks.hh_uz.dto.education.EducationCreateDTO;
 import uz.geeks.hh_uz.dto.education.EducationDTO;
 import uz.geeks.hh_uz.dto.education.EducationUpdateDTO;
-import uz.geeks.hh_uz.dto.resume.EmploymentInfoDTO;
 import uz.geeks.hh_uz.service.education.EducationService;
 
 import javax.validation.Valid;

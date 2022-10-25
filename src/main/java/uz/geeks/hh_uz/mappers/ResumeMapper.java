@@ -10,7 +10,4 @@ import uz.geeks.hh_uz.dto.resume.ResumeUpdateDTO;
 @Mapper(componentModel = "spring")
 public interface ResumeMapper extends BaseMapper<Resume, ResumeDTO, ResumeCreateDTO, ResumeUpdateDTO> {
 
-
-
-
 }

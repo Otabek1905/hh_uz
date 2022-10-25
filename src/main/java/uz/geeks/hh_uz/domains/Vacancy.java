@@ -21,6 +21,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,8 +49,5 @@ public class Vacancy {
 
     @ManyToOne
     private Company company;
-
-
-
 
 }

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+
 public class PersonalInfoUpdateDTO extends GenericDto {
 
     @NotBlank(message = "fullName cannot be empty")

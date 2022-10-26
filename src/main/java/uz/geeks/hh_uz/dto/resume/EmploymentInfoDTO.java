@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+
 public class EmploymentInfoDTO {
 
     @NotBlank(message = "job title cannot be empty")

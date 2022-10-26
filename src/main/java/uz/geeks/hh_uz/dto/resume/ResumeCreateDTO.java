@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class ResumeCreateDTO implements Dto {
 
     @NotBlank(message = "full name cannot be null")

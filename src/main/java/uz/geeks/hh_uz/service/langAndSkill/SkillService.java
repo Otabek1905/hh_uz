@@ -16,6 +16,7 @@ import uz.geeks.hh_uz.service.base.GenericCrudService;
 import uz.geeks.hh_uz.utils.BaseUtils;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -64,7 +65,7 @@ public class SkillService extends AbstractService<SkillRepository, SkillMapper>
         resumeRepository.findById(resumeId).orElseThrow(() -> new RuntimeException("resume not found"));
         repository.findById(dto.getId()).orElseThrow(() -> new RuntimeException("skill not found"));
         Skills skills = mapper.fromUpdateDto(dto);
-        skills.getAuditable().setUpdatedAt(LocalDate.now());
+        skills.getAuditable().setUpdatedAt(new Date());
         repository.save(skills);
     }
 }

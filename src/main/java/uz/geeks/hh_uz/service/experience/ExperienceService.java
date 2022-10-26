@@ -47,7 +47,7 @@ public class ExperienceService extends AbstractService<ExperienceRepository, Exp
         repository.findById(dto.getId()).
                 orElseThrow(() -> new RuntimeException("Experience not found"));
         Experience experience = mapper.fromUpdateDto(dto);
-        experience.getAuditable().setUpdatedAt(LocalDate.now());
+        experience.getAuditable().setUpdatedAt(new Date());
         repository.save(experience);
     }
 

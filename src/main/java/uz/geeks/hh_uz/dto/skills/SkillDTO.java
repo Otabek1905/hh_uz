@@ -7,7 +7,7 @@ import uz.geeks.hh_uz.dto.GenericDto;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class SkillDTO extends GenericDto {
     private String name;
 

@@ -3,6 +3,8 @@ package uz.geeks.hh_uz.domains;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -21,16 +23,15 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Auditable {
-    @Column(nullable = false, unique = true)
-    private Long createdBy;
+//    @Builder.Default
+//    private Long createdBy = 1L;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "createdAt", nullable = false,
-            columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    @Column(name = "createdAt",
+            columnDefinition = "timestamp NOT NULL default CURRENT_TIMESTAMP")
     private Date createdAt;
     private Long updatedBy;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @ColumnDefault("false")
-    @Column(name = "deleted", nullable = false)
+    @Column(name = "deleted", columnDefinition = "BOOLEAN NOT NULL default false")
     private Boolean deleted;
 }

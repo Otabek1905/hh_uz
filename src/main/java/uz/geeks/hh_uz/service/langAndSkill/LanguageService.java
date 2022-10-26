@@ -15,6 +15,7 @@ import uz.geeks.hh_uz.service.base.GenericCrudService;
 import uz.geeks.hh_uz.utils.BaseUtils;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,7 +64,7 @@ public class LanguageService extends AbstractService<LanguageRepository, Languag
     public void edit(Long resumeId, LanguageUpdateDTO dto) {
         resumeRepository.findById(resumeId).orElseThrow(() -> new RuntimeException("resume not found"));
         Language language = mapper.fromUpdateDto(dto);
-        language.getAuditable().setUpdatedAt(LocalDate.now());
+        language.getAuditable().setUpdatedAt(new Date());
         repository.save(language);
     }
 }

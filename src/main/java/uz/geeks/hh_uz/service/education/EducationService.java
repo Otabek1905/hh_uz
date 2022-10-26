@@ -15,6 +15,7 @@ import uz.geeks.hh_uz.service.base.GenericCrudService;
 import uz.geeks.hh_uz.utils.BaseUtils;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -59,7 +60,7 @@ public class EducationService extends AbstractService<EducationRepository, Educa
         repository.findById(dto.getId()).orElseThrow(() -> new RuntimeException("education not found"));
         Education education1 = mapper.fromUpdateDto(dto);
 
-        education1.getAuditable().setUpdatedAt(LocalDate.now());
+        education1.getAuditable().setUpdatedAt(new Date());
         repository.save(education1);
     }
 

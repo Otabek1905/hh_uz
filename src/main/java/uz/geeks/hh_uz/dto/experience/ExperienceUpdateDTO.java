@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class ExperienceUpdateDTO extends GenericDto {
 
         @NotBlank(message = "id cannot be empty")

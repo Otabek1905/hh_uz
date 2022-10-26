@@ -13,6 +13,7 @@ import uz.geeks.hh_uz.service.base.GenericCrudService;
 import uz.geeks.hh_uz.utils.BaseUtils;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,7 +30,7 @@ public class ResumeService extends AbstractService<ResumeRepository, ResumeMappe
     public Long create(@NonNull ResumeCreateDTO dto) {
 
         Resume resume = mapper.fromCreateDto(dto);
-        resume.setAuditable(Auditable.builder().createdAt(LocalDate.now()).build());
+        resume.setAuditable(Auditable.builder().createdAt(new Date()).build());
 
 
 
@@ -81,7 +82,7 @@ public class ResumeService extends AbstractService<ResumeRepository, ResumeMappe
         resume.setEmail(dto.getEmail());
         resume.setFullName(dto.getFullName());
         resume.setPhoneNumber(dto.getPhoneNumber());
-        resume.getAuditable().setUpdatedAt(LocalDate.now());
+        resume.getAuditable().setUpdatedAt(new Date());
         repository.save(resume);
     }
 
@@ -92,7 +93,7 @@ public class ResumeService extends AbstractService<ResumeRepository, ResumeMappe
         resume.setSalary(dto.getSalary());
         resume.setAboutMe(dto.getAboutMe());
         resume.setJobTitle(dto.getJobTitle());
-        resume.getAuditable().setUpdatedAt(LocalDate.now());
+        resume.getAuditable().setUpdatedAt(new Date());
 
         repository.save(resume);
 

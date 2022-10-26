@@ -29,6 +29,7 @@ public class SocialNetwork {
 
     @Column(nullable = false,unique = true)
     private String link;
+
     @ManyToOne
-    private User user;
+    private Users users;
 }

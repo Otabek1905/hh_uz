@@ -9,6 +9,7 @@ import uz.geeks.hh_uz.enums.UserType;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,15 +25,15 @@ import java.util.List;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Embedded
     private Auditable auditable;
 
-    @Column(name = "full name")
-    private String fullname;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -43,21 +44,23 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users")
     private List<SocialNetwork> socialNetworks;
 
     @Column(nullable = false)
     private Location location;
 
     private String image_url;
-    @Column(nullable = false, unique = true)
-    private UserType type;
+
+    @Column(nullable = false)
+    private UserType userType;
 
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.NOT_ACTIVE;
 
-    private LocalDateTime lastLoginAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLoginAt;
 
     private Integer loginTryCount;
 

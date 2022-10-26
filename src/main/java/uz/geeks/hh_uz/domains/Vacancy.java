@@ -26,6 +26,8 @@ public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Builder.Default
+    private Long createdBy = 1L;
     @Embedded
     private Auditable auditable;
 

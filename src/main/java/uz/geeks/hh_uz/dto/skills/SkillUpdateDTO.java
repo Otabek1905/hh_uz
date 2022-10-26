@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class SkillUpdateDTO extends GenericDto {
 
     @NotBlank(message = "skill id cannot be empty")

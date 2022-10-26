@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class SkillCreateDTO implements Dto {
     @NotBlank(message = "skill name cannot be empty")
     private String name;

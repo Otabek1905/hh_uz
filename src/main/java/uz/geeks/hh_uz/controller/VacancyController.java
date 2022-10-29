@@ -1,6 +1,7 @@
 package uz.geeks.hh_uz.controller;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+
 public class VacancyController extends ApiController<VacancyService> {
 
     public VacancyController(VacancyService service) {

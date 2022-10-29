@@ -1,5 +1,6 @@
 package uz.geeks.hh_uz.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@Tag(name="1. User Controller")
 public class UserController extends ApiController<UserDetailsServiceImpl> {
 
     public UserController(UserDetailsServiceImpl service) {

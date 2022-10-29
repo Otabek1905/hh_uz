@@ -3,14 +3,15 @@ package uz.geeks.hh_uz.domains;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import uz.geeks.hh_uz.enums.Location;
-import uz.geeks.hh_uz.enums.UserType;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author "Berdimurodov Shoxrux"
@@ -25,10 +26,13 @@ import java.util.List;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Embedded
     private Auditable auditable;
 
@@ -52,9 +56,6 @@ public class Users {
 
     private String image_url;
 
-    @Column(nullable = false)
-    private UserType userType;
-
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.NOT_ACTIVE;
@@ -64,8 +65,10 @@ public class Users {
 
     private Integer loginTryCount;
 
-//    @OneToMany(mappedBy = "user")
-//    private Collection<AuthRole> userRoles;
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public enum Status {
         ACTIVE,

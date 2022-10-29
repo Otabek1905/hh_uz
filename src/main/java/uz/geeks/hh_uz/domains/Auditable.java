@@ -23,13 +23,13 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class Auditable {
-//    @Builder.Default
-//    private Long createdBy = 1L;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdAt",
             columnDefinition = "timestamp NOT NULL default CURRENT_TIMESTAMP")
     private Date createdAt;
     private Long updatedBy;
+    private Long createdBy;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
     @Column(name = "deleted", columnDefinition = "BOOLEAN NOT NULL default false")

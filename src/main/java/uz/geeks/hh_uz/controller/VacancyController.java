@@ -10,7 +10,6 @@ import uz.geeks.hh_uz.dto.vacancy.VacancyDto;
 import uz.geeks.hh_uz.dto.vacancy.VacancyUpdateDto;
 import uz.geeks.hh_uz.service.vacancy.VacancyService;
 
-import javax.sound.midi.VoiceStatus;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;

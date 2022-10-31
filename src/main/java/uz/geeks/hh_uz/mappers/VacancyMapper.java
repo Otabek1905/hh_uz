@@ -6,6 +6,9 @@ import uz.geeks.hh_uz.dto.vacancy.VacancyCreateDto;
 import uz.geeks.hh_uz.dto.vacancy.VacancyDto;
 import uz.geeks.hh_uz.dto.vacancy.VacancyUpdateDto;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface VacancyMapper extends BaseMapper<Vacancy, VacancyDto, VacancyCreateDto, VacancyUpdateDto> {
+
 }

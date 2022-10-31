@@ -3,13 +3,15 @@ package uz.geeks.hh_uz.domains;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import uz.geeks.hh_uz.enums.Location;
-import uz.geeks.hh_uz.enums.UserType;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author "Berdimurodov Shoxrux"
@@ -24,15 +26,18 @@ import java.util.List;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
-public class User {
+@Builder
+public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Embedded
     private Auditable auditable;
 
-    @Column(name = "full name")
-    private String fullname;
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -43,26 +48,27 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "users")
     private List<SocialNetwork> socialNetworks;
 
     @Column(nullable = false)
     private Location location;
 
     private String image_url;
-    @Column(nullable = false, unique = true)
-    private UserType type;
 
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.NOT_ACTIVE;
 
-    private LocalDateTime lastLoginAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastLoginAt;
 
     private Integer loginTryCount;
 
-//    @OneToMany(mappedBy = "user")
-//    private Collection<AuthRole> userRoles;
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
 
     public enum Status {
         ACTIVE,

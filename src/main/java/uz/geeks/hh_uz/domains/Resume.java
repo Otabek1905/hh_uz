@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.City;
 import uz.geeks.hh_uz.enums.Employment;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,11 +18,13 @@ import java.util.List;
 @AllArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class Resume {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column(nullable = false)
     private String fullName;

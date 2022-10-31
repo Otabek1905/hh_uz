@@ -4,6 +4,7 @@ package uz.geeks.hh_uz.domains;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,11 +17,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @DynamicInsert
 @DynamicUpdate
+@Builder
 public class Experience {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Embedded
     private Auditable auditable;

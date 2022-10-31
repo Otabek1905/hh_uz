@@ -1,9 +1,9 @@
 package uz.geeks.hh_uz.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,10 +13,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
+@DynamicInsert
+@DynamicUpdate
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 
     @Column(nullable = false)
     private String name;

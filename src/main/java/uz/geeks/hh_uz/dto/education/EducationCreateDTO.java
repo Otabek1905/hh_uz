@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 public class EducationCreateDTO implements Dto {
 
     @NotBlank(message = "Education name cannot be empty")

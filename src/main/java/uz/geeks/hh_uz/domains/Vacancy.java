@@ -5,6 +5,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import uz.geeks.hh_uz.enums.JobSchedule;
 import uz.geeks.hh_uz.enums.JobType;
+import uz.geeks.hh_uz.security.SessionUser;
 
 import javax.persistence.*;
 
@@ -26,6 +27,7 @@ public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Embedded
     private Auditable auditable;
 

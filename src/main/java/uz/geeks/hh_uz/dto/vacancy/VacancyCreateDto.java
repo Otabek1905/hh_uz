@@ -26,4 +26,6 @@ public class VacancyCreateDto implements Dto {
     private String offer;
 
     private String demands;
+
+    private Long companyId;
 }

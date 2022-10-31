@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-
 public class VacancyController extends ApiController<VacancyService> {
 
     public VacancyController(VacancyService service) {
